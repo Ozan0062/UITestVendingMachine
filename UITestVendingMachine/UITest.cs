@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using System.Net;
 
 namespace UITestVendingMachine
 {
@@ -17,7 +18,7 @@ namespace UITestVendingMachine
             _driver = new ChromeDriver(DriverDirectory);
             //_driver = new EdgeDriver(DriverDirectory);
 
-            _driver.Navigate().GoToUrl("file:///C:/Users/ohsab/Desktop/Datamatiker/3.%20Semester/3.%20Semester%20Projekt/Hjemmeside/index.html");
+            _driver.Navigate().GoToUrl("https://nice-rock-09b5d2203.4.azurestaticapps.net/");
 
         }
 
@@ -37,16 +38,15 @@ namespace UITestVendingMachine
         //    string CreateTitle = _driver.Title;
         //    Assert.AreEqual("Opret Bruger", CreateTitle);
         //    IWebElement addFirstName = _driver.FindElement(By.Id("addFirstName"));
-        //    addFirstName.SendKeys("Jacob");
+        //    addFirstName.SendKeys("Oliver");
         //    IWebElement addLastName = _driver.FindElement(By.Id("addLastName"));
-        //    addLastName.SendKeys("Jacobsen");
+        //    addLastName.SendKeys("Kruse");
         //    IWebElement addEmail = _driver.FindElement(By.Id("addEmail"));
-        //    addEmail.SendKeys("jacobjacobsen@gmail.com");
+        //    addEmail.SendKeys("oliverkruse@gmail.com");
         //    IWebElement addMobileNumber = _driver.FindElement(By.Id("addMobileNumber"));
-        //    addMobileNumber.SendKeys("85239712");
+        //    addMobileNumber.SendKeys("93959416");
         //    IWebElement addUser = _driver.FindElement(By.Id("addUser"));
         //    addUser.Click();
-
         //}
 
 
@@ -59,7 +59,12 @@ namespace UITestVendingMachine
             create.Click();
             string AccountingTitle = _driver.Title;
             Assert.AreEqual("Regnskab", AccountingTitle);
-
+            IWebElement addFilter = _driver.FindElement(By.Id("addFilter"));
+            addFilter.SendKeys("Oliver");
+            IWebElement buttonFilter = _driver.FindElement(By.Id("buttonFilter"));
+            buttonFilter.Click();
+            IWebElement sumButton = _driver.FindElement(By.Id("sumButton"));
+            sumButton.Click();
         }
     }
 }
